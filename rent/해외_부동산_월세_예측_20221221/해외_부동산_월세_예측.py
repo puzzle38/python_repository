@@ -33,7 +33,7 @@ from sklearn.preprocessing import OneHotEncoder
 from supervised.automl import AutoML
 # -
 
-# # 버젼 확인하기
+# ## 버젼 확인하기
 
 print("python version : ", sys.version)
 print("pandas version : ", pd.__version__)
@@ -41,14 +41,8 @@ print("numpy version : ", np.__version__)
 print("seaborn version : ", sns.__version__)
 print("scikit version : ", sklearn.__version__)
 
-# # 데이터 불러오기
 
-train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/train.csv')
-test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/test.csv')
-submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/sample_submission.csv')
-
-
-# # 시드 고정
+# ## 시드 고정
 
 # +
 def seed_everything(seed):
@@ -59,21 +53,35 @@ def seed_everything(seed):
 seed_everything(38) # Seed 고정
 # -
 
-# # data load
+# # 데이터 불러오기
+
+train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/train.csv')
+test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/test.csv')
+submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/sample_submission.csv')
+
+# ## train, test 데이터셋 생성
 
 x_train = train.drop(columns=['ID', 'monthlyRent(us_dollar)'])
 y_train = train['monthlyRent(us_dollar)']
-x_test = pd.read_csv('./test.csv').drop(columns=['ID'])
+x_test = test.drop(columns=['ID'])
 
 # # EDA
-# ## eda
 
-df = pd.read_csv('./train.csv')
+# EDA용 df 데이터셋 생성
+df = train.copy()
 total_df = df.drop(columns = ['ID'])
 #qualitative: 질적 변수입니다
 qual_df = total_df[['propertyType', 'suburbName']]
 #quantitative: 양적 변수입니다
 quan_df = total_df.drop(columns = ['propertyType', 'suburbName'])
+
+# ## 결측치 확인
+
+df.isnull().sum()
+
+test.isnull().sum()
+
+# ## 양적변수
 
 # 양적변수 기초통계량 확인
 total_df.describe()
@@ -81,6 +89,8 @@ total_df.describe()
 #양적 변수 분포 시각화
 quan_df.hist(bins=100, figsize=(18,18))
 plt.show()
+
+# ## 질적변수
 
 # +
 #질적 변수 빈도 시각화
@@ -90,6 +100,9 @@ sns.countplot(x = qual_df['propertyType'], ax=axes[0])
 sns.countplot(x = qual_df['suburbName'], ax=axes[1])
 
 plt.show()
+# -
+
+# ## 이상치 확인
 
 # +
 #이상치 확인
@@ -108,6 +121,9 @@ sns.boxplot(y = quan_df['area(square_meters)'], ax=axes[2][1])
 sns.boxplot(y = quan_df['monthlyRent(us_dollar)'], ax=axes[2][2])
 
 plt.show()
+# -
+
+# ## 상관관계
 
 # +
 #상관관계 히트맵
@@ -117,7 +133,7 @@ sns.heatmap(quan_df.corr(), annot = True, fmt = '.1f', linewidth = 1, cmap = 'Bl
 plt.show()
 # -
 
-total_df.suburbName.unique()
+# # 모델링
 
 # +
 # qualitative column one-hot encoding
@@ -138,10 +154,10 @@ x_test = x_test.drop(qual_col, axis=1)
 print('Done.')
 # -
 
-x_train
-
 # train 데아터와 검증 데이터로 분할
 x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2)
+
+# ## AutoML
 
 # automl 모델 생성
 automl = AutoML(mode = 'Compete', eval_metric='mae')
