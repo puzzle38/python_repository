@@ -29,6 +29,7 @@ import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
 from sklearn.preprocessing import OneHotEncoder
+from sklearn.preprocessing import RobustScaler
 
 from supervised.automl import AutoML
 # -
@@ -59,17 +60,10 @@ train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/
 test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/test.csv')
 submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/sample_submission.csv')
 
-# ## train, test 데이터셋 생성
-
-x_train = train.drop(columns=['ID', 'monthlyRent(us_dollar)'])
-y_train = train['monthlyRent(us_dollar)']
-x_test = test.drop(columns=['ID'])
-
 # # EDA
 
 # EDA용 df 데이터셋 생성
-df = train.copy()
-total_df = df.drop(columns = ['ID'])
+total_df = train.drop(columns = ['ID'])
 #qualitative: 질적 변수입니다
 qual_df = total_df[['propertyType', 'suburbName']]
 #quantitative: 양적 변수입니다
@@ -133,7 +127,24 @@ sns.heatmap(quan_df.corr(), annot = True, fmt = '.1f', linewidth = 1, cmap = 'Bl
 plt.show()
 # -
 
-# # 모델링
+# # 전처리
+
+# ## 변수명 조정
+
+# ID와 타겟 컬럼 제거
+x_train = train.drop(columns=['ID', 'monthlyRent(us_dollar)'])
+y_train = train['monthlyRent(us_dollar)']
+x_test = test.drop(columns=['ID'])
+
+# North Delhi -> Delhi North
+# West Delhi -> Delhi west
+x_train.loc[x_train['suburbName']=='North Delhi','suburbName']='Delhi North'
+x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Delhi West'
+x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Other'
+x_test.loc[x_test['suburbName']=='North Delhi','suburbName']='Delhi North'
+x_test.loc[x_test['suburbName']=='West Delhi','suburbName']='Delhi West'
+
+# ## One-Hot 인코딩
 
 # +
 # qualitative column one-hot encoding
@@ -148,13 +159,23 @@ for i in qual_col:
             ohe.categories_ = np.append(ohe.categories_, qual_value)
     # One Hot Encoder가 Test 데이터로부터 Fitting되는 것은 Data Leakage이므로, Test 데이터에는 Train 데이터로 Fitting된 One Hot Encoder로부터 transform만 수행되어야 합니다.
     x_test = pd.concat([x_test, pd.DataFrame(ohe.transform(x_test[[i]]), columns=ohe.categories_[0])], axis=1)
-    
-x_train = x_train.drop(qual_col, axis=1)
-x_test = x_test.drop(qual_col, axis=1)
-print('Done.')
 # -
 
-# train 데아터와 검증 데이터로 분할
+x_train = x_train.drop(columns=['propertyType','suburbName'])
+x_test = x_test.drop(columns=['propertyType','suburbName'])
+
+# ## Robust Scaler()
+
+rs = RobustScaler()
+rs.fit(x_train.loc[:,:'area(square_meters)'])
+x_train.loc[:,:'area(square_meters)'] = rs.transform(x_train.loc[:,:'area(square_meters)'])
+x_test.loc[:,:'area(square_meters)'] = rs.transform(x_test.loc[:,:'area(square_meters)'])
+
+# # 모델링
+
+# ## 데이터셋 분할
+
+# train 데이터와 val 데이터로 분할
 x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2)
 
 # ## AutoML
@@ -167,7 +188,7 @@ automl.fit(x_train, y_train)
 pred = automl.predict(x_test)
 submission['monthlyRent(us_dollar)'] = pred
 # 제출파일 생성
-submission.to_csv('./result3_20221214.csv', index=False)
+submission.to_csv('./result1_20221221.csv', index=False)
 
 # 변수중요도
 importances_values = model.feature_importances_
