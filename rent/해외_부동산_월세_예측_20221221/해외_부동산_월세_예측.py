@@ -43,9 +43,9 @@ print("scikit version : ", sklearn.__version__)
 
 # # 데이터 불러오기
 
-train = pd.read_csv('train.csv')
-test = pd.read_csv('test.csv')
-submission = pd.read_csv('sample_submission.csv')
+train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/train.csv')
+test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/test.csv')
+submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/sample_submission.csv')
 
 
 # # 시드 고정
