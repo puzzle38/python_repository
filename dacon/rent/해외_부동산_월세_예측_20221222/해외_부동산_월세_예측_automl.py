@@ -32,6 +32,10 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.preprocessing import RobustScaler
 
 from supervised.automl import AutoML
+
+import warnings
+warnings.filterwarnings(action='ignore')
+
 # -
 
 # ## 버젼 확인하기
@@ -56,9 +60,9 @@ seed_everything(38) # Seed 고정
 
 # # 데이터 불러오기
 
-train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/train.csv')
-test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/test.csv')
-submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/dacon/main/rent/data/sample_submission.csv')
+train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/train.csv')
+test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/test.csv')
+submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/sample_submission.csv')
 
 # # EDA
 
@@ -71,7 +75,7 @@ quan_df = total_df.drop(columns = ['propertyType', 'suburbName'])
 
 # ## 결측치 확인
 
-df.isnull().sum()
+train.isnull().sum()
 
 test.isnull().sum()
 
@@ -140,9 +144,18 @@ x_test = test.drop(columns=['ID'])
 # West Delhi -> Delhi west
 x_train.loc[x_train['suburbName']=='North Delhi','suburbName']='Delhi North'
 x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Delhi West'
-x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Other'
 x_test.loc[x_test['suburbName']=='North Delhi','suburbName']='Delhi North'
 x_test.loc[x_test['suburbName']=='West Delhi','suburbName']='Delhi West'
+x_train.loc[x_train['suburbName']=='South West Delhi','suburbName']='Other'
+x_train.loc[x_train['suburbName']=='Rohini','suburbName']='Other'
+x_train.loc[x_train['suburbName']=='North West Delhi','suburbName']='Other'
+x_test.loc[x_test['suburbName']=='South West Delhi','suburbName']='Other'
+x_test.loc[x_test['suburbName']=='Rohini','suburbName']='Other'
+x_test.loc[x_test['suburbName']=='North West Delhi','suburbName']='Other'
+
+plt.figure(figsize=(15,15))
+sns.countplot(x = x_train['suburbName'])
+plt.show()
 
 # ## One-Hot 인코딩
 
@@ -164,6 +177,11 @@ for i in qual_col:
 x_train = x_train.drop(columns=['propertyType','suburbName'])
 x_test = x_test.drop(columns=['propertyType','suburbName'])
 
+# ## 로그 정규화
+
+x_train.loc[:,:'area(square_meters)'] = np.log1p(x_train.loc[:,:'area(square_meters)'])
+x_test.loc[:,:'area(square_meters)'] = np.log1p(x_test.loc[:,:'area(square_meters)'])
+
 # ## Robust Scaler()
 
 rs = RobustScaler()
@@ -173,22 +191,24 @@ x_test.loc[:,:'area(square_meters)'] = rs.transform(x_test.loc[:,:'area(square_m
 
 # # 모델링
 
-# ## 데이터셋 분할
-
-# train 데이터와 val 데이터로 분할
-x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.2)
-
 # ## AutoML
 
+val_strategy = {
+    'validation_type' : 'kfold',
+    'k_folds' : 5,
+    'shuffle' : True,
+    "stratify": True
+}
+
 # automl 모델 생성
-automl = AutoML(mode = 'Compete', eval_metric='mae')
+automl = AutoML(mode = 'Compete', eval_metric='mae', ml_task='regression', n_jobs=-1, validation_strategy=val_strategy)
 automl.fit(x_train, y_train)
 
 # 생성된 모델을 test로 예측하기
 pred = automl.predict(x_test)
 submission['monthlyRent(us_dollar)'] = pred
 # 제출파일 생성
-submission.to_csv('./result1_20221221.csv', index=False)
+submission.to_csv('./result1_20221222.csv', index=False)
 
 # 변수중요도
 importances_values = model.feature_importances_
