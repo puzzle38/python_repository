@@ -146,12 +146,6 @@ x_train.loc[x_train['suburbName']=='North Delhi','suburbName']='Delhi North'
 x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Delhi West'
 x_test.loc[x_test['suburbName']=='North Delhi','suburbName']='Delhi North'
 x_test.loc[x_test['suburbName']=='West Delhi','suburbName']='Delhi West'
-x_train.loc[x_train['suburbName']=='South West Delhi','suburbName']='Other'
-x_train.loc[x_train['suburbName']=='Rohini','suburbName']='Other'
-x_train.loc[x_train['suburbName']=='North West Delhi','suburbName']='Other'
-x_test.loc[x_test['suburbName']=='South West Delhi','suburbName']='Other'
-x_test.loc[x_test['suburbName']=='Rohini','suburbName']='Other'
-x_test.loc[x_test['suburbName']=='North West Delhi','suburbName']='Other'
 
 plt.figure(figsize=(15,15))
 sns.countplot(x = x_train['suburbName'])
@@ -208,15 +202,4 @@ automl.fit(x_train, y_train)
 pred = automl.predict(x_test)
 submission['monthlyRent(us_dollar)'] = pred
 # 제출파일 생성
-submission.to_csv('./result1_20221222.csv', index=False)
-
-# 변수중요도
-importances_values = model.feature_importances_
-importances = pd.Series(importances_values, index = x_train.columns)
-top20 = importances.sort_values(ascending = False)
-plt.figure(figsize=(8,6))
-plt.title('Feature importances')
-sns.barplot(x = top20, y = top20.index)
-plt.show()
-
-
+submission.to_csv('./result2_20221222.csv', index=False)

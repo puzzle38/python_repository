@@ -1,0 +1,77 @@
+{
+    "new_features": [
+        {
+            "feature1": "Villa",
+            "feature2": "area(square_meters)",
+            "operation": "sum",
+            "score": 0.3468936081
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "North West Delhi",
+            "operation": "diff",
+            "score": 0.346959932
+        },
+        {
+            "feature1": "North West Delhi",
+            "feature2": "area(square_meters)",
+            "operation": "sum",
+            "score": 0.3473178215
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "Villa",
+            "operation": "diff",
+            "score": 0.3488345137
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "South West Delhi",
+            "operation": "diff",
+            "score": 0.3491735793
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "bedrooms",
+            "operation": "sum",
+            "score": 0.3500463327
+        },
+        {
+            "feature1": "South West Delhi",
+            "feature2": "area(square_meters)",
+            "operation": "sum",
+            "score": 0.3526891532
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "Independent House",
+            "operation": "diff",
+            "score": 0.3667888012
+        },
+        {
+            "feature1": "Rohini",
+            "feature2": "area(square_meters)",
+            "operation": "sum",
+            "score": 0.3757935772
+        },
+        {
+            "feature1": "area(square_meters)",
+            "feature2": "Rohini",
+            "operation": "diff",
+            "score": 0.3759790922
+        }
+    ],
+    "new_columns": [
+        "Villa_sum_area(square_meters)",
+        "area(square_meters)_diff_North West Delhi",
+        "North West Delhi_sum_area(square_meters)",
+        "area(square_meters)_diff_Villa",
+        "area(square_meters)_diff_South West Delhi",
+        "area(square_meters)_sum_bedrooms",
+        "South West Delhi_sum_area(square_meters)",
+        "area(square_meters)_diff_Independent House",
+        "Rohini_sum_area(square_meters)",
+        "area(square_meters)_diff_Rohini"
+    ],
+    "ml_task": "regression"
+}

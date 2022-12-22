@@ -1,0 +1,60 @@
+{
+    "columns": [
+        "bedrooms",
+        "latitude",
+        "longitude",
+        "distanceMetro(km)",
+        "distanceAirport(km)",
+        "distanceHospital(km)",
+        "distanceRailway(km)",
+        "area(square_meters)",
+        "Apartment",
+        "Independent Floor",
+        "Independent House",
+        "Villa",
+        "Delhi Central",
+        "Delhi East",
+        "Delhi North",
+        "Delhi South",
+        "Delhi West",
+        "Dwarka",
+        "North West Delhi",
+        "Other",
+        "Rohini",
+        "South West Delhi"
+    ],
+    "rows": 8692,
+    "cols": 22,
+    "target_is_numeric": true,
+    "columns_info": {
+        "bedrooms": [],
+        "latitude": [],
+        "longitude": [],
+        "distanceMetro(km)": [],
+        "distanceAirport(km)": [],
+        "distanceHospital(km)": [],
+        "distanceRailway(km)": [],
+        "area(square_meters)": [],
+        "Apartment": [],
+        "Independent Floor": [
+            "scale"
+        ],
+        "Independent House": [],
+        "Villa": [],
+        "Delhi Central": [],
+        "Delhi East": [],
+        "Delhi North": [],
+        "Delhi South": [],
+        "Delhi West": [],
+        "Dwarka": [],
+        "North West Delhi": [],
+        "Other": [],
+        "Rohini": [],
+        "South West Delhi": []
+    },
+    "target_info": [
+        "scale_log"
+    ],
+    "n_features": 22,
+    "is_sample_weighted": false
+}

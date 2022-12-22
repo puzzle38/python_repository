@@ -1,0 +1,420 @@
+{
+    "uid": "e9e77e28-d898-4740-b66a-9b48b275acd1",
+    "name": "57_NeuralNetwork",
+    "preprocessing": [
+        {
+            "scale": [
+                {
+                    "scale": [
+                        0.4838478083275711
+                    ],
+                    "mean": [
+                        0.6260606932259456
+                    ],
+                    "var": [
+                        0.234108701623394
+                    ],
+                    "n_samples_seen": 6953,
+                    "n_features_in": 1,
+                    "columns": [
+                        "Independent Floor"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "scale_y": {
+                "scale": [
+                    0.6799159643643367
+                ],
+                "mean": [
+                    5.50112842359877
+                ],
+                "var": [
+                    0.46228571859748596
+                ],
+                "n_samples_seen": 6953,
+                "n_features_in": 1,
+                "columns": [
+                    "target"
+                ],
+                "scale_method": "scale_log_and_normal",
+                "X_min_values": [
+                    14.0
+                ]
+            },
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Independent Floor": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "scale_log_and_normal"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "scale": [
+                {
+                    "scale": [
+                        0.4835465761771661
+                    ],
+                    "mean": [
+                        0.6272112757083274
+                    ],
+                    "var": [
+                        0.2338172913326599
+                    ],
+                    "n_samples_seen": 6953,
+                    "n_features_in": 1,
+                    "columns": [
+                        "Independent Floor"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "scale_y": {
+                "scale": [
+                    0.6833976813941459
+                ],
+                "mean": [
+                    5.497954006130596
+                ],
+                "var": [
+                    0.4670323909348946
+                ],
+                "n_samples_seen": 6953,
+                "n_features_in": 1,
+                "columns": [
+                    "target"
+                ],
+                "scale_method": "scale_log_and_normal",
+                "X_min_values": [
+                    14.0
+                ]
+            },
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Independent Floor": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "scale_log_and_normal"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "scale": [
+                {
+                    "scale": [
+                        0.4833426557166497
+                    ],
+                    "mean": [
+                        0.6279838941616336
+                    ],
+                    "var": [
+                        0.23362012283522374
+                    ],
+                    "n_samples_seen": 6954,
+                    "n_features_in": 1,
+                    "columns": [
+                        "Independent Floor"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "scale_y": {
+                "scale": [
+                    0.6808058646134162
+                ],
+                "mean": [
+                    5.498187222124968
+                ],
+                "var": [
+                    0.4634966252920211
+                ],
+                "n_samples_seen": 6954,
+                "n_features_in": 1,
+                "columns": [
+                    "target"
+                ],
+                "scale_method": "scale_log_and_normal",
+                "X_min_values": [
+                    14.0
+                ]
+            },
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Independent Floor": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "scale_log_and_normal"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "scale": [
+                {
+                    "scale": [
+                        0.4843172207623666
+                    ],
+                    "mean": [
+                        0.6242450388265747
+                    ],
+                    "var": [
+                        0.23456317032698293
+                    ],
+                    "n_samples_seen": 6954,
+                    "n_features_in": 1,
+                    "columns": [
+                        "Independent Floor"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "scale_y": {
+                "scale": [
+                    0.6781213827453423
+                ],
+                "mean": [
+                    5.499997731973519
+                ],
+                "var": [
+                    0.45984860973645497
+                ],
+                "n_samples_seen": 6954,
+                "n_features_in": 1,
+                "columns": [
+                    "target"
+                ],
+                "scale_method": "scale_log_and_normal",
+                "X_min_values": [
+                    14.0
+                ]
+            },
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Independent Floor": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "scale_log_and_normal"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "scale": [
+                {
+                    "scale": [
+                        0.48457433987735704
+                    ],
+                    "mean": [
+                        0.6232384239286741
+                    ],
+                    "var": [
+                        0.23481229086757632
+                    ],
+                    "n_samples_seen": 6954,
+                    "n_features_in": 1,
+                    "columns": [
+                        "Independent Floor"
+                    ],
+                    "scale_method": "scale_normal"
+                }
+            ],
+            "scale_y": {
+                "scale": [
+                    0.7659626695199554
+                ],
+                "mean": [
+                    5.376335106128386
+                ],
+                "var": [
+                    0.5866988110981365
+                ],
+                "n_samples_seen": 6954,
+                "n_features_in": 1,
+                "columns": [
+                    "target"
+                ],
+                "scale_method": "scale_log_and_normal",
+                "X_min_values": [
+                    36.0
+                ]
+            },
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {
+                    "Independent Floor": [
+                        "scale_normal"
+                    ]
+                },
+                "target_preprocessing": [
+                    "na_exclude",
+                    "scale_log_and_normal"
+                ],
+                "ml_task": "regression"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "4347aa52-c112-4afd-8355-b62d5da6e3f8",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1236,
+                "dense_1_size": 64,
+                "dense_2_size": 16,
+                "learning_rate": 0.01,
+                "explain_level": 0
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "561cabd2-0c25-4758-8411-cee63f7a1436",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1236,
+                "dense_1_size": 64,
+                "dense_2_size": 16,
+                "learning_rate": 0.01,
+                "explain_level": 0
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "e9c36a76-9b26-486a-8e83-2aa594a6799d",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1236,
+                "dense_1_size": 64,
+                "dense_2_size": 16,
+                "learning_rate": 0.01,
+                "explain_level": 0
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "9adca5ec-9a69-4419-9351-2401deff8dd6",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1236,
+                "dense_1_size": 64,
+                "dense_2_size": 16,
+                "learning_rate": 0.01,
+                "explain_level": 0
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Neural Network",
+            "algorithm_short_name": "Neural Network",
+            "uid": "9fd3113c-5d4d-4335-b714-961e44a26db5",
+            "params": {
+                "model_type": "Neural Network",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1236,
+                "dense_1_size": 64,
+                "dense_2_size": 16,
+                "learning_rate": 0.01,
+                "explain_level": 0
+            },
+            "name": "learner_fold_4"
+        }
+    ],
+    "params": {
+        "additional": {
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {
+                "Independent Floor": [
+                    "scale_normal"
+                ]
+            },
+            "target_preprocessing": [
+                "na_exclude",
+                "scale_log_and_normal"
+            ],
+            "ml_task": "regression"
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "k_folds": 5,
+            "shuffle": true,
+            "X_path": "AutoML_1\\X.data",
+            "y_path": "AutoML_1\\y.data",
+            "results_path": "AutoML_1"
+        },
+        "learner": {
+            "model_type": "Neural Network",
+            "ml_task": "regression",
+            "n_jobs": -1,
+            "seed": 1236,
+            "dense_1_size": 64,
+            "dense_2_size": 16,
+            "learning_rate": 0.01,
+            "explain_level": 0
+        },
+        "automl_random_state": 1234,
+        "ml_task": "regression",
+        "explain_level": 0,
+        "name": "57_NeuralNetwork",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 72.0
+    },
+    "saved": [
+        "57_NeuralNetwork\\learner_fold_0.neural_network",
+        "57_NeuralNetwork\\learner_fold_1.neural_network",
+        "57_NeuralNetwork\\learner_fold_2.neural_network",
+        "57_NeuralNetwork\\learner_fold_3.neural_network",
+        "57_NeuralNetwork\\learner_fold_4.neural_network"
+    ],
+    "predictions_fname": "57_NeuralNetwork\\predictions_out_of_folds.csv",
+    "metric_name": "mae",
+    "final_loss": 63.114881306315134,
+    "train_time": 15.772199869155884,
+    "is_stacked": false
+}

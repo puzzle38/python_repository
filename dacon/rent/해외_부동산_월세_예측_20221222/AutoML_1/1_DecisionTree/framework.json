@@ -1,0 +1,192 @@
+{
+    "uid": "0fb66e41-87ec-4fe4-aba4-7023ee802bb2",
+    "name": "1_DecisionTree",
+    "preprocessing": [
+        {
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        },
+        {
+            "ml_task": "regression",
+            "params": {
+                "columns_preprocessing": {},
+                "target_preprocessing": [
+                    "na_exclude"
+                ],
+                "ml_task": "regression"
+            }
+        }
+    ],
+    "learners": [
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "5a3eacf2-aa37-4f55-98c5-3af0c3c86bd9",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 0
+            },
+            "name": "learner_fold_0"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "bda3accf-01e6-40f3-be56-8b1f866dfbc2",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 0
+            },
+            "name": "learner_fold_1"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "20daf010-0d7b-436b-8270-c06e960becac",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 0
+            },
+            "name": "learner_fold_2"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "9e06947c-2db6-40c9-81b0-e0cd512589cb",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 0
+            },
+            "name": "learner_fold_3"
+        },
+        {
+            "library_version": "1.0.2",
+            "algorithm_name": "Decision Tree",
+            "algorithm_short_name": "Decision Tree",
+            "uid": "8641c6ab-a65a-45a1-807b-95159c55f966",
+            "params": {
+                "model_type": "Decision Tree",
+                "ml_task": "regression",
+                "n_jobs": -1,
+                "seed": 1235,
+                "criterion": "mse",
+                "max_depth": 3,
+                "explain_level": 0
+            },
+            "name": "learner_fold_4"
+        }
+    ],
+    "params": {
+        "additional": {
+            "trees_in_step": 1,
+            "train_cant_improve_limit": 0,
+            "max_steps": 1,
+            "max_rows_limit": null,
+            "max_cols_limit": null
+        },
+        "preprocessing": {
+            "columns_preprocessing": {},
+            "target_preprocessing": [
+                "na_exclude"
+            ],
+            "ml_task": "regression"
+        },
+        "validation_strategy": {
+            "validation_type": "kfold",
+            "k_folds": 5,
+            "shuffle": true,
+            "X_path": "AutoML_1\\X.data",
+            "y_path": "AutoML_1\\y.data",
+            "results_path": "AutoML_1"
+        },
+        "learner": {
+            "model_type": "Decision Tree",
+            "ml_task": "regression",
+            "n_jobs": -1,
+            "seed": 1235,
+            "criterion": "mse",
+            "max_depth": 3,
+            "explain_level": 0
+        },
+        "automl_random_state": 1234,
+        "ml_task": "regression",
+        "explain_level": 0,
+        "name": "1_DecisionTree",
+        "status": "initialized",
+        "final_loss": null,
+        "train_time": null,
+        "data_type": "original",
+        "max_time_for_learner": 72.0
+    },
+    "saved": [
+        "1_DecisionTree\\learner_fold_0.decision_tree",
+        "1_DecisionTree\\learner_fold_1.decision_tree",
+        "1_DecisionTree\\learner_fold_2.decision_tree",
+        "1_DecisionTree\\learner_fold_3.decision_tree",
+        "1_DecisionTree\\learner_fold_4.decision_tree"
+    ],
+    "predictions_fname": "1_DecisionTree\\predictions_out_of_folds.csv",
+    "metric_name": "mae",
+    "final_loss": 84.33954370799187,
+    "train_time": 8.596916437149048,
+    "is_stacked": false
+}
