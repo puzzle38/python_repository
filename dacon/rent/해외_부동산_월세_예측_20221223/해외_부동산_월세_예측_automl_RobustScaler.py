@@ -171,11 +171,6 @@ for i in qual_col:
 x_train = x_train.drop(columns=['propertyType','suburbName'])
 x_test = x_test.drop(columns=['propertyType','suburbName'])
 
-# ## 로그 정규화
-
-x_train.loc[:,:'area(square_meters)'] = np.log1p(x_train.loc[:,:'area(square_meters)'])
-x_test.loc[:,:'area(square_meters)'] = np.log1p(x_test.loc[:,:'area(square_meters)'])
-
 # ## Robust Scaler()
 
 rs = RobustScaler()
@@ -202,4 +197,4 @@ automl.fit(x_train, y_train)
 pred = automl.predict(x_test)
 submission['monthlyRent(us_dollar)'] = pred
 # 제출파일 생성
-submission.to_csv('./result2_20221222.csv', index=False)
+submission.to_csv('./result_20221223_robust.csv', index=False)
