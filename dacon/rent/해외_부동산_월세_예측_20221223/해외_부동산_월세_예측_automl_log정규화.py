@@ -34,7 +34,6 @@ from supervised.automl import AutoML
 
 import warnings
 warnings.filterwarnings(action='ignore')
-
 # -
 
 # ## 버젼 확인하기
@@ -59,17 +58,17 @@ seed_everything(38) # Seed 고정
 
 # # 데이터 불러오기
 
-train = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/train.csv')
-test = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/test.csv')
-submission = pd.read_csv('https://raw.githubusercontent.com/puzzle38/python_repository/main/dacon/rent/data/sample_submission.csv')
+train = pd.read_csv('C:/Users/user/python_repository/dacon/rent/data/train.csv')
+test = pd.read_csv('C:/Users/user/python_repository/dacon/rent/data/test.csv')
+submission = pd.read_csv('C:/Users/user/python_repository/dacon/rent/data/sample_submission.csv')
 
 # # EDA
 
 # EDA용 df 데이터셋 생성
 total_df = train.drop(columns = ['ID'])
-#qualitative: 질적 변수입니다
+#qualitative: 질적 변수
 qual_df = total_df[['propertyType', 'suburbName']]
-#quantitative: 양적 변수입니다
+#quantitative: 양적 변수
 quan_df = total_df.drop(columns = ['propertyType', 'suburbName'])
 
 # ## 결측치 확인
@@ -139,8 +138,8 @@ x_train = train.drop(columns=['ID', 'monthlyRent(us_dollar)'])
 y_train = train['monthlyRent(us_dollar)']
 x_test = test.drop(columns=['ID'])
 
-# North Delhi -> Delhi North
-# West Delhi -> Delhi west
+# North Delhi -> Delhi North 로 통일
+# West Delhi -> Delhi West 로 통일
 x_train.loc[x_train['suburbName']=='North Delhi','suburbName']='Delhi North'
 x_train.loc[x_train['suburbName']=='West Delhi','suburbName']='Delhi West'
 x_test.loc[x_test['suburbName']=='North Delhi','suburbName']='Delhi North'
@@ -179,6 +178,7 @@ x_test.loc[:,:'area(square_meters)'] = np.log1p(x_test.loc[:,:'area(square_meter
 
 # ## AutoML
 
+# 검증옵션
 val_strategy = {
     'validation_type' : 'kfold',
     'k_folds' : 5,
@@ -190,7 +190,7 @@ val_strategy = {
 automl = AutoML(mode = 'Compete', eval_metric='mae', ml_task='regression', n_jobs=-1, validation_strategy=val_strategy)
 automl.fit(x_train, y_train)
 
-# 생성된 모델을 test로 예측하기
+# 생성된 모델로 test 예측하기
 pred = automl.predict(x_test)
 submission['monthlyRent(us_dollar)'] = pred
 # 제출파일 생성
